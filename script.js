@@ -51,26 +51,52 @@ function playRound(playerChoice, computerChoice){
         default:
             status = 'moron';
     }
-
     return status;
-}
-
-let computerChoice = getComputerChoice();
-let playerChoice = prompt('Play your move (rock, paper or scissors)');
-
-result = playRound(playerChoice, computerChoice);
-
-switch (result){
-    case 'win':
-        console.log('You win! ' + playerChoice + ' beats ' + computerChoice);
-        break;
-    case 'lose':
-        console.log('You lose! ' + computerChoice + ' beats ' + playerChoice);
-        break;
-    case 'tied' :
-        console.log("It's a tie! You both played " + playerChoice);
-        break;
-    default:
-        console.log('Take this seriously, you ' + result);
 
 }
+
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    
+    for (let i = 0; i < 5 ; i++){
+        
+        let computerChoice = getComputerChoice();
+        let playerChoice = prompt('Play your move (rock, paper or scissors)');
+        result = playRound(playerChoice, computerChoice);
+
+        switch (result){
+            case 'win':
+                console.log ('You win! ' + playerChoice + ' beats ' + computerChoice);
+                playerScore++;
+                break;
+            case 'lose':
+                console.log ('You lose! ' + computerChoice + ' beats ' + playerChoice);
+                computerScore++;
+                break;
+            case 'tied' :
+                console.log ("It's a tie! You both played " + playerChoice);
+                break;
+            default:
+                console.log ('Take this seriously, you ' + result);
+        
+        }
+    }
+
+    if (playerScore > computerScore){
+        console.log("You win with a score of "+ playerScore + " against the computer with a score of " + computerScore);
+    }
+    else if (playerScore < computerScore){
+        console.log("You lose with a score of "+ playerScore + " against the computer with a score of " + computerScore);
+    }
+    else{
+        console.log('You tied! Your scores are ' + playerScore + 'and ' + computerScore);
+    }
+}
+
+game();
+
+
+
+
