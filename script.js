@@ -164,6 +164,10 @@ function loadGamePage(body){
     playerScore.className = "score";
     playerScore.textContent = "Your score: 0";
 
+    let computerMove = document.createElement('div');
+    computerMove.id = 'computer-move';
+    computerMove.className = "score";
+
     let computerScore = document.createElement('div');
     computerScore.id = 'computer-score';
     computerScore.className = "score";
@@ -183,6 +187,7 @@ function loadGamePage(body){
         
     body.appendChild(scoreContainer);
         scoreContainer.appendChild(playerScore);
+        scoreContainer.appendChild(computerMove);
         scoreContainer.appendChild(computerScore);  
 }
 
@@ -232,10 +237,13 @@ startButton.addEventListener('click', ()=>{
 
             computerChoice = getComputerChoice();
             playerChoice = choice.id;
+
+            startPage.querySelector('#computer-move').textContent = "Computer played " + computerChoice.toUpperCase() + "!";
     
     
             console.log('computer choice: ' + computerChoice);
-            console.log('player choice: ' + playerChoice);        
+            console.log('player choice: ' + playerChoice);    
+
             
             let result = playRound(playerChoice, computerChoice);
     
@@ -246,6 +254,8 @@ startButton.addEventListener('click', ()=>{
                 else{
 
                     playerScoreNode.textContent = "You score: " + playerScore;
+                    startPage.querySelector('#computer-move').textContent += " Let's go!";
+
                 }
             }
             else if (result == 'lose'){
@@ -255,6 +265,7 @@ startButton.addEventListener('click', ()=>{
                 else{
 
                     computerScoreNode.textContent = "You score: " + computerScore;
+                    startPage.querySelector('#computer-move').textContent += " yikes...";
                 }
             }
     
