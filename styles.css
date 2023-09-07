@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    color: white;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.player-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img {
+    height: 389px;
+    width: auto;
+}
+
+.human-icon {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.computer-icon {
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.footer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
