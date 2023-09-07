@@ -95,8 +95,34 @@ function game(){
     }
 }
 
+function startGame(body){
+
+    body.style['transition'] = 'opacity 1s ease';
+    body.style['opacity'] = '0';
+    
+    // Set a delay of 1 second before clearing content
+    setTimeout(()=>{
+        clearContent(body);
+    }, 1000);
+    
+
+}
+
+
+startPage = document.querySelector('body');
+startGameButton = document.querySelector('.start-game-button');
+
+startGameButton.addEventListener('click', ()=> {
+
+    startGame(startPage);
+});
 
 
 
+function clearContent(body){
 
+    while (body.firstChild){
+        body.removeChild(body.firstChild);
+    }
+}
 
