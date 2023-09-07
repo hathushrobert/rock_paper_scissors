@@ -101,13 +101,17 @@ function startGame(body){
     body.style['opacity'] = '0';
     
     // Set a delay of 1 second before clearing content
-    setTimeout(()=>{
-        clearContent(body);
-        loadGamePage(body);
-    }, 2000);
 
+
+
+    clearContent(body);
+    body.style['transition'] = 'opacity 1s ease';
+    body.style['opacity'] = '1';
+    
+    loadGamePage(body);
     
     
+
 
 }
 
@@ -122,41 +126,48 @@ function clearContent(body){
 
 function loadGamePage(body){
 
-    header = document.createElement('div');
+    let header = document.createElement('div');
     header.className = "header";
 
-    promptHeading = document.createElement('h1');
+    let promptHeading = document.createElement('h1');
     promptHeading.textContent = "Make your move...";
 
-    reassurance = document.createElement('p');
+    let reassurance = document.createElement('p');
     reassurance.textContent = "Dont worry, the computer cannot see your move.";
 
-    options = document.createElement('div');
+    let options = document.createElement('div');
     options.className = "options-container";
 
-    imageContainer1 = document.createElement('div');
+    let imageContainer1 = document.createElement('div');
     imageContainer1.className = "image-container";
+    imageContainer1.id = "rock"; 
     imageContainer1.innerHTML = '<img src="images/rock.png" alt="rock">';
 
-    imageContainer2 = document.createElement('div');
+
+    let imageContainer2 = document.createElement('div');
     imageContainer2.className = "image-container";
     imageContainer2.innerHTML = '<img src="images/paper.png" alt="paper">';
+    imageContainer2.id = "paper"; 
 
-    imageContainer3 = document.createElement('div');
+
+    let imageContainer3 = document.createElement('div');
     imageContainer3.className = "image-container";
     imageContainer3.innerHTML = '<img src="images/scissors.png" alt="scissors">';
+    imageContainer3.id = "scissors";
 
 
-    scoreContainer = document.createElement('div');
+    let scoreContainer = document.createElement('div');
     scoreContainer.className = "score-container";
     
-    playerScore = document.createElement('div');
+    let playerScore = document.createElement('div');
+    playerScore.id = "player-score"
     playerScore.className = "score";
     playerScore.textContent = "Your score: 0";
 
-    computerScore = document.createElement('div');
+    let computerScore = document.createElement('div');
+    computerScore.id = 'computer-score';
     computerScore.className = "score";
-    computerScore.textContent = "Your score: 0";
+    computerScore.textContent = "Computer score: 0";
 
 
     body.appendChild(header);
@@ -172,24 +183,95 @@ function loadGamePage(body){
         
     body.appendChild(scoreContainer);
         scoreContainer.appendChild(playerScore);
-        scoreContainer.appendChild(computerScore);
-
-
-    
-
-    body.style['transition'] = 'opacity 1s ease';
-    body.style['opacity'] = '1';
-
-   
+        scoreContainer.appendChild(computerScore);  
 }
 
-startPage = document.querySelector('body');
-startGameButton = document.querySelector('.start-game-button');
 
-startGameButton.addEventListener('click', ()=> {
+function loadWinScreen(body){
+    
+    body.innerHTML ="You win";
+
+}
+
+
+function loadLoseScreen(body){
+    
+    body.innerHTML ="You lose";
+
+}
+
+
+
+// MAIN
+let startPage = document.querySelector('body');
+let startButton = startPage.querySelector('.start-game-button');
+
+startButton.addEventListener('click', ()=>{
 
     startGame(startPage);
+    
+    let rockButton = startPage.querySelector('#rock-button')
+    let paperButton = startPage.querySelector('#paper-button');
+    let scissorsButton = startPage.querySelector('#scissors-button');
+
+    let computerChoice;
+    let playerChoice;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    let playerScoreNode = startPage.querySelector('#player-score');
+    let computerScoreNode = startPage.querySelector('#computer-score');
+
+    let counter = 0;
+    let choices = ['rock', 'paper', 'scissors'];
+    let choicesNodes = startPage.querySelectorAll('.image-container')
+
+    choicesNodes.forEach((choice) => {
+
+        playerChoice = choice.addEventListener('click', ()=>{
+
+            computerChoice = getComputerChoice();
+            playerChoice = choice.id;
+    
+    
+            console.log('computer choice: ' + computerChoice);
+            console.log('player choice: ' + playerChoice);        
+            
+            let result = playRound(playerChoice, computerChoice);
+    
+            if (result == 'win'){
+                playerScore++;
+
+                if (playerScore == 5) {loadWinScreen(startPage);}
+                else{
+
+                    playerScoreNode.textContent = "You score: " + playerScore;
+                }
+            }
+            else if (result == 'lose'){
+                computerScore++;
+
+                if (computerScore == 5) {loadLoseScreen(startPage);}
+                else{
+
+                    computerScoreNode.textContent = "You score: " + computerScore;
+                }
+            }
+    
+        });
+
+
+    });
+
 });
+
+
+
+
+
+
+
+
 
 
 
