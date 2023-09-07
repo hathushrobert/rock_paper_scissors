@@ -47,3 +47,24 @@ body {
     align-items: center;
 
 }
+
+
+
+
+
+
+.options-container {
+
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 100px; 
+    
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}

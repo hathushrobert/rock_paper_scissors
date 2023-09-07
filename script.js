@@ -103,11 +103,85 @@ function startGame(body){
     // Set a delay of 1 second before clearing content
     setTimeout(()=>{
         clearContent(body);
-    }, 1000);
+        loadGamePage(body);
+    }, 2000);
+
+    
     
 
 }
 
+function clearContent(body){
+
+    while (body.firstChild){
+        body.removeChild(body.firstChild);
+    }
+
+}
+
+
+function loadGamePage(body){
+
+    header = document.createElement('div');
+    header.className = "header";
+
+    promptHeading = document.createElement('h1');
+    promptHeading.textContent = "Make your move...";
+
+    reassurance = document.createElement('p');
+    reassurance.textContent = "Dont worry, the computer cannot see your move.";
+
+    options = document.createElement('div');
+    options.className = "options-container";
+
+    imageContainer1 = document.createElement('div');
+    imageContainer1.className = "image-container";
+    imageContainer1.innerHTML = '<img src="images/rock.png" alt="rock">';
+
+    imageContainer2 = document.createElement('div');
+    imageContainer2.className = "image-container";
+    imageContainer2.innerHTML = '<img src="images/paper.png" alt="paper">';
+
+    imageContainer3 = document.createElement('div');
+    imageContainer3.className = "image-container";
+    imageContainer3.innerHTML = '<img src="images/scissors.png" alt="scissors">';
+
+
+    scoreContainer = document.createElement('div');
+    scoreContainer.className = "score-container";
+    
+    playerScore = document.createElement('div');
+    playerScore.className = "score";
+    playerScore.textContent = "Your score: 0";
+
+    computerScore = document.createElement('div');
+    computerScore.className = "score";
+    computerScore.textContent = "Your score: 0";
+
+
+    body.appendChild(header);
+
+        header.appendChild(promptHeading);
+        header.appendChild(reassurance);
+
+    body.appendChild(options);
+
+        options.appendChild(imageContainer1);
+        options.appendChild(imageContainer2);
+        options.appendChild(imageContainer3);
+        
+    body.appendChild(scoreContainer);
+        scoreContainer.appendChild(playerScore);
+        scoreContainer.appendChild(computerScore);
+
+
+    
+
+    body.style['transition'] = 'opacity 1s ease';
+    body.style['opacity'] = '1';
+
+   
+}
 
 startPage = document.querySelector('body');
 startGameButton = document.querySelector('.start-game-button');
@@ -119,10 +193,5 @@ startGameButton.addEventListener('click', ()=> {
 
 
 
-function clearContent(body){
 
-    while (body.firstChild){
-        body.removeChild(body.firstChild);
-    }
-}
 
