@@ -204,6 +204,10 @@ function loadWinScreen(body){
     let retryButton = document.createElement('button');
     retryButton.className = 'start-game-button';
     retryButton.textContent = "Play again";
+    retryButton.addEventListener('click', ()=> {
+        startGame(body);
+        game(body);
+    });
 
     clearContent(body);
     body.appendChild(resultScreen);
@@ -227,6 +231,11 @@ function loadLoseScreen(body){
     let retryButton = document.createElement('button');
     retryButton.className = 'start-game-button';
     retryButton.textContent = "Play again";
+    retryButton.addEventListener('click', ()=> {
+        startGame(body);
+        game(body);
+    });
+
 
     clearContent(body);
     body.appendChild(resultScreen);
@@ -245,11 +254,13 @@ let startButton = startPage.querySelector('.start-game-button');
 startButton.addEventListener('click', ()=>{
 
     startGame(startPage);
+    game(startPage);
     
-    let rockButton = startPage.querySelector('#rock-button')
-    let paperButton = startPage.querySelector('#paper-button');
-    let scissorsButton = startPage.querySelector('#scissors-button');
+    
+});
 
+
+function game(startPage) {
     let computerChoice;
     let playerChoice;
     let playerScore = 0;
@@ -305,8 +316,7 @@ startButton.addEventListener('click', ()=>{
 
     });
 
-});
-
+}
 
 
 
