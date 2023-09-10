@@ -193,15 +193,46 @@ function loadGamePage(body){
 
 
 function loadWinScreen(body){
+
+    let resultScreen = document.createElement('div');
+    resultScreen.className = "result-screen";
     
-    body.innerHTML ="You win";
+    let winMessage = document.createElement('h1');
+    winMessage.textContent = "You win!";
+    winMessage.className = "result-message";
+
+    let retryButton = document.createElement('button');
+    retryButton.className = 'start-game-button';
+    retryButton.textContent = "Play again";
+
+    clearContent(body);
+    body.appendChild(resultScreen);
+
+    resultScreen.appendChild(winMessage);
+    resultScreen.appendChild(retryButton);
+
 
 }
 
 
 function loadLoseScreen(body){
     
-    body.innerHTML ="You lose";
+    let resultScreen = document.createElement('div');
+    resultScreen.className = "result-screen";
+    
+    let winMessage = document.createElement('h1');
+    winMessage.textContent = "You lose!";
+    winMessage.className = "result-message";
+
+    let retryButton = document.createElement('button');
+    retryButton.className = 'start-game-button';
+    retryButton.textContent = "Play again";
+
+    clearContent(body);
+    body.appendChild(resultScreen);
+
+    resultScreen.appendChild(winMessage);
+    resultScreen.appendChild(retryButton);
 
 }
 
