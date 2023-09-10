@@ -80,3 +80,19 @@ body {
 
     font-size:48px;
 }
+
+.start-game-button {
+
+    padding: 10px 25px;
+    color: white;
+    background-color: #222;
+    font-size: 24px;
+    border: 2px solid white;
+    border-radius: 10px;;
+}
+
+.start-game-button:hover {
+
+    border: 2px solid #4287f5;
+    color:#4287f5;
+}
