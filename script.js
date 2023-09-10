@@ -127,7 +127,7 @@ function clearContent(body){
 function loadGamePage(body){
 
     let header = document.createElement('div');
-    header.className = "header";
+    header.className = "gameplay-header";
 
     let promptHeading = document.createElement('h1');
     promptHeading.textContent = "Make your move...";

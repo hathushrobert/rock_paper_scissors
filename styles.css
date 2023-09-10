@@ -15,13 +15,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 75px;
 }
 
 .player-container {
     display: flex;
     justify-content: center;
     gap: 40px;
+    margin-bottom: 50px;
 }
 
 
@@ -95,4 +96,35 @@ body {
 
     border: 2px solid #4287f5;
     color:#4287f5;
+}
+
+
+
+.result-screen {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-message {
+    font-size: 256px;
+    margin-bottom: 50px;
+}
+
+
+.gameplay-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.gameplay-header h1{
+    font-size: 64px;
+}
+
+.score-container {
+    font-size: 24px;;
 }
