@@ -32,15 +32,12 @@ body {
     align-items: center;
 }
 
+
 .image-container img {
     height: 389px;
     width: auto;
 }
 
-.human-icon {
-    border: 3px solid black;
-    border-radius: 5px;
-}
 
 .computer-icon {
     border: 3px solid white;
@@ -68,6 +65,29 @@ body {
     margin-bottom: 100px; 
     
 }
+
+.rps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 15px;
+}
+
+.rps-container:hover {
+
+    border: 5px solid #4287f5;
+
+}
+
+
+.rps-container img {
+    height: 389px;
+    width: auto;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
 
 .score-container {
     display: flex;

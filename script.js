@@ -139,19 +139,19 @@ function loadGamePage(body){
     options.className = "options-container";
 
     let imageContainer1 = document.createElement('div');
-    imageContainer1.className = "image-container";
+    imageContainer1.className = "rps-container";
     imageContainer1.id = "rock"; 
     imageContainer1.innerHTML = '<img src="images/rock.png" alt="rock">';
 
 
     let imageContainer2 = document.createElement('div');
-    imageContainer2.className = "image-container";
+    imageContainer2.className = "rps-container";
     imageContainer2.innerHTML = '<img src="images/paper.png" alt="paper">';
     imageContainer2.id = "paper"; 
 
 
     let imageContainer3 = document.createElement('div');
-    imageContainer3.className = "image-container";
+    imageContainer3.className = "rps-container";
     imageContainer3.innerHTML = '<img src="images/scissors.png" alt="scissors">';
     imageContainer3.id = "scissors";
 
@@ -271,7 +271,7 @@ function game(startPage) {
 
     let counter = 0;
     let choices = ['rock', 'paper', 'scissors'];
-    let choicesNodes = startPage.querySelectorAll('.image-container')
+    let choicesNodes = startPage.querySelectorAll('.rps-container')
 
     choicesNodes.forEach((choice) => {
 
@@ -297,6 +297,8 @@ function game(startPage) {
 
                     playerScoreNode.textContent = "You score: " + playerScore;
                     startPage.querySelector('#computer-move').textContent += " Let's go!";
+                    startPage.querySelector('#computer-move').style['color'] = '#6cf542';
+                    
 
                 }
             }
@@ -308,7 +310,13 @@ function game(startPage) {
 
                     computerScoreNode.textContent = "You score: " + computerScore;
                     startPage.querySelector('#computer-move').textContent += " yikes...";
+                    startPage.querySelector('#computer-move').style['color'] = '#e83333';
                 }
+            }
+            else {
+                    startPage.querySelector('#computer-move').textContent += " *holds breath*";
+                    startPage.querySelector('#computer-move').style['color'] = '#eff542';
+
             }
     
         });
